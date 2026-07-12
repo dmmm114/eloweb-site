@@ -157,53 +157,34 @@
   .sec-head h2{font-size:clamp(30px,4.4vw,54px);letter-spacing:-0.035em;font-weight:500;line-height:1.05}
   .sec-sub{color:var(--dim);font-size:16.5px;max-width:52ch;margin-bottom:52px}
 
-  /* ---------- PRODUTO: card vivo ---------- */
-  .products{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
-  @media(max-width:880px){.products{grid-template-columns:1fr}}
-  .pcard{position:relative;border:1px solid var(--line);border-radius:24px;background:var(--card);
-    overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;display:grid;
-    grid-template-columns:1.1fr 0.9fr;min-height:400px}
-  @media(max-width:640px){.pcard{grid-template-columns:1fr}}
-  .pcard:hover{border-color:var(--line-2);transform:translateY(-4px);
-    box-shadow:0 26px 60px -30px color-mix(in srgb, var(--fg) 30%, transparent)}
-  .pcard .info{padding:34px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+  /* ---------- SOLUÇÕES: diretório de projetos ---------- */
+  .solutions{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.solutions{grid-template-columns:1fr}}
+  .scard{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);
+    padding:30px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s}
+  a.scard::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%), var(--accent-soft), transparent 60%)}
+  a.scard:hover::after{opacity:1}
+  a.scard:hover{border-color:var(--line-2);transform:translateY(-4px);
+    box-shadow:0 24px 55px -30px color-mix(in srgb, var(--fg) 28%, transparent)}
+  .scard .s-top{display:flex;align-items:flex-start;justify-content:space-between}
+  .scard .qicon{width:52px;height:52px;border-radius:14px;display:block}
   .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
     padding:6px 12px;border-radius:100px;border:1px solid var(--line-2);color:var(--dim);width:max-content}
   .pill.live{color:var(--accent);border-color:color-mix(in srgb, var(--accent) 40%, transparent);background:var(--accent-soft)}
-  .pcard h3{font-size:34px;letter-spacing:-0.03em;font-weight:500;margin-top:18px}
-  .pcard .tag{font-family:var(--serif);font-style:italic;font-size:19px;margin:6px 0 12px}
-  .pcard p{font-size:14.5px;color:var(--dim);max-width:40ch}
-  .pcard .arrow{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--accent)}
-  /* mini-telefone com demo viva */
-  .mini-stage{position:relative;background:
-      radial-gradient(120% 100% at 85% 0%, rgba(57,169,140,0.25), transparent 55%),
-      radial-gradient(120% 100% at 10% 100%, rgba(43,47,99,0.55), transparent 60%), #0A0F1C;
-    display:flex;align-items:center;justify-content:center;padding:34px 20px}
-  .mini-phone{width:min(200px,70%);aspect-ratio:9/18;border-radius:26px;background:#070B14;
-    border:1px solid rgba(234,242,238,0.14);box-shadow:0 26px 50px -22px rgba(0,0,0,0.8), inset 0 0 0 4px #04060c;
-    position:relative;overflow:hidden}
-  .mini-phone::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
-    width:48px;height:13px;border-radius:100px;background:#04060c;z-index:3}
-  .mini-clock{margin:34px 14px 4px;font-size:21px;font-weight:300;color:#EAF2EE;font-family:var(--sans)}
-  .mini-notifs{position:absolute;inset:74px 8px 44px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
-  .mn{background:rgba(22,29,46,0.92);border:1px solid rgba(234,242,238,0.09);border-radius:10px;
-    padding:7px 9px;font-size:8.5px;line-height:1.35;color:rgba(234,242,238,0.85);
-    opacity:0;transform:translateY(-10px);transition:opacity .4s,transform .4s,max-height .4s,margin .4s,padding .4s}
-  .mn b{display:block;font-size:9px;color:#EAF2EE}
-  .mn.show{opacity:1;transform:none}
-  .mn.mute{opacity:0;transform:translateX(55%);max-height:0;margin-top:-6px;padding-top:0;padding-bottom:0;overflow:hidden}
-  .mn.urgent{border-color:rgba(232,179,75,0.55)}
-  .mini-bundle{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(15,21,35,0.95);
-    border:1px solid rgba(234,242,238,0.09);border-radius:10px;padding:7px 9px;font-size:8.5px;
-    color:rgba(234,242,238,0.6);display:flex;justify-content:space-between;align-items:center;
-    opacity:0;transform:translateY(8px);transition:all .45s}
-  .mini-bundle.show{opacity:1;transform:none}
-  .mini-bundle .c{font-family:var(--mono);font-size:8px;border:1px solid rgba(234,242,238,0.2);
-    padding:2px 6px;border-radius:100px}
-  .soon{border:1px dashed var(--line-2);border-radius:24px;display:flex;flex-direction:column;
-    justify-content:center;padding:34px;gap:10px}
-  .soon .label{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint)}
-  .soon .st{font-size:18px;color:var(--dim);letter-spacing:-0.02em}
+  .scard h3{font-size:30px;letter-spacing:-0.03em;font-weight:500;margin-top:26px}
+  .scard .s-cat{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;color:var(--dim);margin-top:8px}
+  .scard .arrow{margin-top:26px;display:inline-flex;align-items:center;gap:8px;font-size:14px;
+    font-weight:500;color:var(--accent)}
+  .scard.soon{border-style:dashed;background:transparent;justify-content:center}
+  .scard.soon .label{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  .scard.soon .st{font-size:18px;color:var(--dim);letter-spacing:-0.02em;line-height:1.35}
+  /* Quell = portal: o card acende-se nas cores do próprio produto (teal → índigo) */
+  a.scard::after{background:radial-gradient(460px circle at var(--mx,50%) var(--my,12%),
+    rgba(57,169,140,0.18), rgba(43,47,99,0.14) 44%, transparent 72%)}
+  a.scard:hover{border-color:color-mix(in srgb, #39A98C 45%, var(--line));transform:translateY(-4px);
+    box-shadow:0 26px 60px -30px rgba(57,169,140,0.5)}
 
   /* ---------- BENTO ---------- */
   .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px}
@@ -212,6 +193,9 @@
   .cell{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:24px;
     position:relative;overflow:hidden;transition:border-color .25s}
   .cell:hover{border-color:var(--line-2)}
+  .cell::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
+    background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%), var(--accent-soft), transparent 62%)}
+  .cell:hover::after{opacity:1}
   .cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;
     color:var(--faint);margin-bottom:10px}
   .cell-a{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between}
@@ -303,6 +287,9 @@
       <use href="#elo-cap" fill="currentColor" transform="rotate(90 50 50)"/>
       <g clip-path="url(#elo-tb)"><use href="#elo-cap" fill="currentColor"/></g>
     </symbol>
+    <linearGradient id="qg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39A98C"/><stop offset="1" stop-color="#2B2F63"/>
+    </linearGradient>
   </defs>
 </svg>
 
@@ -366,31 +353,31 @@
   <!-- PRODUTOS -->
   <section id="produtos">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="num">01</span><h2>O que estamos a construir</h2></div>
-      <p class="sec-sub reveal">Não fazemos software por encomenda. Fazemos os nossos produtos — e a demo ao lado está viva.</p>
-      <div class="products">
-        <a class="pcard reveal" href="https://quellcalm.com" target="_blank" rel="noopener" data-hover>
-          <div class="info">
-            <div>
-              <span class="pill live">● Em beta fechada</span>
-              <h3>Quell</h3>
-              <div class="tag">Silencia o ruído. Encontra a tua calma.</div>
-              <p>Gestor de notificações inteligente para Android. Silencia promoções, deixa passar as mensagens, destaca o urgente — 100% no dispositivo.</p>
-            </div>
-            <span class="arrow">quellcalm.com
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      <div class="sec-head reveal"><span class="num">01</span><h2>As nossas soluções</h2></div>
+      <p class="sec-sub reveal">Poucos produtos, cada um com o seu foco — e o seu próprio site. Escolhe um para o conhecer por dentro.</p>
+      <div class="solutions">
+        <a class="scard reveal" href="https://quellcalm.com" target="_blank" rel="noopener" data-hover>
+          <div class="s-top">
+            <svg class="qicon" viewBox="0 0 100 100" aria-hidden="true">
+              <rect width="100" height="100" rx="22" fill="url(#qg)"/>
+              <g transform="translate(24,22) scale(2.3)"><path fill="#fff" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></g>
+            </svg>
+            <span class="pill live">● Em beta fechada</span>
           </div>
-          <div class="mini-stage" aria-hidden="true">
-            <div class="mini-phone">
-              <div class="mini-clock">09:41</div>
-              <div class="mini-notifs" id="mini-notifs"></div>
-              <div class="mini-bundle" id="mini-bundle"><span>🔇 Promoções</span><span class="c" id="mini-count">0</span></div>
-            </div>
+          <div>
+            <h3>Quell</h3>
+            <div class="s-cat">Notificações inteligentes · Android</div>
           </div>
+          <span class="arrow">Descobrir a Quell
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
         </a>
-        <div class="soon reveal">
+        <div class="scard soon reveal">
           <span class="label">Em preparação</span>
           <span class="st">O próximo produto já está no estirador.<br>Mesmo cuidado, outra dor.</span>
+        </div>
+        <div class="scard soon reveal">
+          <span class="label">O teu projeto?</span>
+          <span class="st">Uma ideia para tirar do papel?<br>Vamos conversar.</span>
         </div>
       </div>
     </div>
@@ -614,7 +601,7 @@ if('IntersectionObserver' in window){
   const ctx=cv.getContext&&cv.getContext('2d');
   if(!ctx)return;
   const CAP="M 37,13 a 13,13 0 0 1 26,0 v 74 a 13,13 0 0 1 -26,0 z M 45,18 a 5,5 0 0 1 10,0 v 64 a 5,5 0 0 1 -10,0 z";
-  let W,H,DPR,pts=[],mx=-9999,my=-9999,raf=0,running=true,visible=true;
+  let W,H,DPR,pts=[],mx=-9999,my=-9999,raf=0,running=true,visible=true,first=true;
   function accent(){return getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#2540F0';}
   function fg(){return getComputedStyle(document.documentElement).getPropertyValue('--fg').trim()||'#0A0D12';}
   function sample(){
@@ -642,18 +629,22 @@ if('IntersectionObserver' in window){
     const size=big?Math.min(W*0.36,560):Math.min(W*0.9,420);
     const ox=big?W-size-W*0.04:(W-size)/2;
     const oy=big?(H-size)/2:(H-size)/2;
-    pts=SAMPLES.map(s=>({
-      hx:ox+s.u*size, hy:oy+s.v*size,
-      x:ox+s.u*size+(Math.random()-0.5)*30,
-      y:oy+s.v*size+(Math.random()-0.5)*30,
-      ph:Math.random()*Math.PI*2, sp:0.3+Math.random()*0.5
-    }));
+    pts=SAMPLES.map(s=>{
+      const hx=ox+s.u*size, hy=oy+s.v*size;
+      return {hx,hy,
+        x: first ? Math.random()*W : hx,
+        y: first ? Math.random()*H : hy,
+        ph:Math.random()*Math.PI*2, sp:0.3+Math.random()*0.5};
+    });
+    first=false;
   }
   function frame(){
     raf=0;
     if(!running)return;
     ctx.clearRect(0,0,W,H);
-    const A=accent(), F=fg(), dark=document.documentElement.dataset.theme==='dark';
+    const A=accent(), dark=document.documentElement.dataset.theme==='dark';
+    const dim=dark?'rgba(244,241,234,0.32)':'rgba(10,13,18,0.28)';
+    const web=[];
     for(const p of pts){
       p.ph+=p.sp*0.01;
       const wx=Math.cos(p.ph)*1.6, wy=Math.sin(p.ph*1.2)*1.6;
@@ -663,14 +654,24 @@ if('IntersectionObserver' in window){
       if(d2<16900){const d=Math.sqrt(d2)||1,f=(130-d)/130*3.2;fx=dx/d*f;fy=dy/d*f;}
       p.x+=(p.hx+wx-p.x)*0.07+fx;
       p.y+=(p.hy+wy-p.y)*0.07+fy;
-      const near=d2<16900;
-      ctx.beginPath();ctx.arc(p.x,p.y,near?2.1:1.5,0,7);
-      ctx.fillStyle=near?A:(dark?'rgba(244,241,234,0.34)':'rgba(10,13,18,0.30)');
+      const near=d2<21000;
+      if(near&&web.length<48) web.push(p);
+      ctx.beginPath();ctx.arc(p.x,p.y,near?2.2:1.4,0,7);
+      ctx.fillStyle=near?A:dim;
       ctx.fill();
-      if(near&&d2<9000){
-        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mx,my);
-        ctx.strokeStyle=A;ctx.globalAlpha=0.10;ctx.lineWidth=1;ctx.stroke();ctx.globalAlpha=1;
+    }
+    // teia viva: os nós próximos ligam-se entre si — o "elo" desenha-se à passagem do rato
+    if(web.length>1){
+      ctx.strokeStyle=A;ctx.lineWidth=1;
+      for(let i=0;i<web.length;i++){
+        const a=web[i], cdx=a.x-mx, cdy=a.y-my, cd=cdx*cdx+cdy*cdy;
+        if(cd<9000){ctx.globalAlpha=(1-cd/9000)*0.16;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mx,my);ctx.stroke();}
+        for(let j=i+1;j<web.length;j++){
+          const b=web[j], ex=a.x-b.x, ey=a.y-b.y, ed=ex*ex+ey*ey;
+          if(ed<2800){ctx.globalAlpha=(1-ed/2800)*0.28;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+        }
       }
+      ctx.globalAlpha=1;
     }
     schedule();
   }
@@ -696,55 +697,16 @@ if('IntersectionObserver' in window){
   new MutationObserver(()=>{if(reduced)drawStatic();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 })();
 
-/* ---------- mini demo Quell no card ---------- */
-(function(){
-  const box=document.getElementById('mini-notifs'), bundle=document.getElementById('mini-bundle'),
-        cnt=document.getElementById('mini-count');
-  if(!box)return;
-  const SEQ=[
-    {t:'Maria',b:'Jantar amanhã? 🍝',kind:'keep'},
-    {t:'ShopMax',b:'SALDOS −70% só hoje!',kind:'mute'},
-    {t:'CTT',b:'Encomenda em entrega',kind:'urgent'},
-    {t:'GameHub',b:'Sentimos a tua falta…',kind:'mute'},
-  ];
-  let timers=[],playing=false;
-  function clear(){timers.forEach(clearTimeout);timers=[];box.innerHTML='';bundle.classList.remove('show');cnt.textContent='0';}
-  function play(){
-    if(reduced){ // versão estática
-      clear();
-      SEQ.filter(s=>s.kind!=='mute').forEach(s=>{
-        const el=document.createElement('div');el.className='mn show'+(s.kind==='urgent'?' urgent':'');
-        el.innerHTML='<b>'+s.t+'</b>'+s.b;box.appendChild(el);
-      });
-      cnt.textContent='2';bundle.classList.add('show');return;
-    }
-    clear();
-    let muted=0,t=300;
-    SEQ.forEach(s=>{
-      timers.push(setTimeout(()=>{
-        const el=document.createElement('div');
-        el.className='mn'+(s.kind==='urgent'?' urgent':'');
-        el.innerHTML='<b>'+s.t+'</b>'+s.b;
-        box.appendChild(el);
-        requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
-        if(s.kind==='mute'){
-          timers.push(setTimeout(()=>{el.classList.add('mute');muted++;cnt.textContent=muted;bundle.classList.add('show');},1000));
-        }
-      },t));
-      t+=1200;
-    });
-    timers.push(setTimeout(play,t+3200)); // loop
-  }
-  function inV(el){const r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(es=>{
-      if(es[0].isIntersecting){if(!playing){playing=true;play();}}
-      else{playing=false;clear();}
-    },{threshold:0.3}).observe(box);
-    if(inV(box)&&!playing){playing=true;play();}
-    setTimeout(()=>{if(!playing&&inV(box)){playing=true;play();}},2200);
-  }else play();
-})();
+/* ---------- portal: o glow de cada card segue o cursor ---------- */
+if(fine){
+  document.querySelectorAll('.scard, .cell').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    },{passive:true});
+  });
+}
 
 /* ---------- copiar email ---------- */
 document.getElementById('copy-mail').addEventListener('click',()=>{
