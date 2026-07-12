@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eloweb — Estúdio de software</title>
+<meta name="description" content="A eloweb é o estúdio de software da Cosmic Oasis. Criamos aplicações próprias — simples, rápidas e privadas por natureza. A primeira é a Quell.">
+<meta name="theme-color" content="#F4F1EA">
+<meta property="og:title" content="eloweb — Estúdio de software">
+<meta property="og:description" content="Criamos aplicações próprias — simples, rápidas e privadas por natureza.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eloweb.pt">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1EA; --paper-2:#EEEAE0; --ink:#0A0D12; --ink-2:#181D26;
+    --blue:#2540F0; --blue-dim:rgba(37,64,240,0.12);
+    --dim:rgba(10,13,18,0.60); --faint:rgba(10,13,18,0.42);
+    --line:rgba(10,13,18,0.10); --line-2:rgba(10,13,18,0.16);
+    --sans:'Geist',system-ui,-apple-system,sans-serif;
+    --mono:'Geist Mono',ui-monospace,monospace;
+    --serif:'Fraunces',ui-serif,Georgia,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-weight:400;line-height:1.55;letter-spacing:-0.006em;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  }
+  ::selection{background:var(--blue);color:var(--paper)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .blue{color:var(--blue)}
+  .mono{font-family:var(--mono)}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint)}
+
+  /* ---- NAV ---- */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,241,234,0.78);
+    backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.scrolled{border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand svg{width:26px;height:26px;color:var(--ink)}
+  .brand .wm{font-weight:500;font-size:20px;letter-spacing:-0.045em}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:14px;color:var(--dim);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{border:1px solid var(--line-2);border-radius:100px;padding:9px 18px !important;
+    color:var(--ink) !important;transition:all .2s}
+  .nav-cta:hover{background:var(--ink);color:var(--paper) !important;border-color:var(--ink)}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---- HERO ---- */
+  .hero{padding:120px 0 100px;position:relative}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:34px;
+    padding:7px 15px;border:1px solid var(--line);border-radius:100px;font-size:12.5px;color:var(--dim)}
+  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);
+    box-shadow:0 0 0 4px var(--blue-dim)}
+  h1{font-size:clamp(42px,7vw,84px);line-height:1.02;letter-spacing:-0.04em;
+    font-weight:500;max-width:16ch}
+  .hero p.sub{margin-top:32px;font-size:clamp(17px,2.1vw,21px);line-height:1.5;
+    color:var(--dim);max-width:52ch}
+  .hero .cta-row{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;height:50px;padding:0 26px;border-radius:100px;
+    font-size:15px;font-weight:500;transition:all .22s;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(10,13,18,0.4)}
+  .btn-ghost{border-color:var(--line-2);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .btn svg{width:16px;height:16px}
+  .hero-mark{position:absolute;right:-40px;top:70px;width:min(38vw,460px);color:var(--ink);
+    opacity:0.05;pointer-events:none}
+  @media(max-width:900px){.hero-mark{display:none}}
+
+  /* ---- section frame ---- */
+  section{position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:48px;
+    padding-top:34px;border-top:1px solid var(--line)}
+  .sec-head h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.03em;font-weight:500;line-height:1.1}
+  .sec-head .num{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:0.1em;padding-top:6px}
+  .block{padding:70px 0}
+
+  /* ---- PRODUCTS ---- */
+  .products{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+  @media(max-width:860px){.products{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);border-radius:22px;padding:34px;background:rgba(255,255,255,0.4);
+    transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+  .card.feature{display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+  a.card:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(10,13,18,0.28)}
+  .qicon{width:60px;height:60px;border-radius:15px;display:block}
+  .card .ptop{display:flex;align-items:center;justify-content:space-between}
+  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:6px 11px;border-radius:100px;border:1px solid var(--line-2);color:var(--dim)}
+  .pill.live{color:var(--blue);border-color:rgba(37,64,240,0.3);background:var(--blue-dim)}
+  .card h3{font-size:28px;letter-spacing:-0.03em;font-weight:500;margin:26px 0 8px}
+  .card .tag{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);margin-bottom:12px}
+  .card p{font-size:15px;color:var(--dim);max-width:44ch}
+  .card .arrow{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:14px;
+    font-weight:500;color:var(--blue)}
+  .card.soon{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+    background:transparent;border-style:dashed}
+  .card.soon .label{margin-bottom:10px}
+  .card.soon .st{font-size:18px;color:var(--faint);letter-spacing:-0.02em}
+
+  /* ---- PRINCIPLES ---- */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:800px){.grid3{grid-template-columns:1fr}}
+  .principle{padding:30px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,0.35)}
+  .principle .pn{width:38px;height:38px;border-radius:10px;background:var(--ink);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .principle .pn svg{width:19px;height:19px}
+  .principle h4{font-size:18px;letter-spacing:-0.02em;font-weight:500;margin-bottom:8px}
+  .principle p{font-size:14.5px;color:var(--dim)}
+
+  /* ---- ABOUT ---- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:32px}}
+  .about p.lead{font-size:clamp(20px,2.6vw,26px);line-height:1.45;letter-spacing:-0.02em}
+  .about p.body{margin-top:20px;font-size:16px;color:var(--dim);max-width:48ch}
+  .about-side{border:1px solid var(--line);border-radius:18px;padding:30px;background:rgba(255,255,255,0.4)}
+  .about-side .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .about-side .row:last-child{border-bottom:0}
+  .about-side .row .k{color:var(--faint);font-family:var(--mono);font-size:12px;letter-spacing:0.05em}
+  .about-side .row .v{font-weight:500}
+
+  /* ---- CONTACT ---- */
+  .contact{text-align:center;padding:96px 0}
+  .contact h2{font-size:clamp(32px,5vw,58px);letter-spacing:-0.035em;font-weight:500;line-height:1.05}
+  .contact p{margin-top:20px;font-size:18px;color:var(--dim)}
+  .contact .cta-row{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* ---- FOOTER ---- */
+  footer{border-top:1px solid var(--line);padding:60px 0 44px;margin-top:20px}
+  .foot-mark{font-size:clamp(64px,14vw,160px);line-height:0.9;letter-spacing:-0.05em;font-weight:500;
+    color:var(--ink);opacity:0.9;margin-bottom:48px}
+  .foot-cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;align-items:flex-end}
+  .foot-legal{font-size:12.5px;color:var(--faint);line-height:1.7;max-width:60ch}
+  .foot-legal strong{color:var(--dim);font-weight:500}
+  .foot-links{display:flex;gap:22px;font-size:13.5px;color:var(--dim)}
+  .foot-links a:hover{color:var(--ink)}
+
+  /* ---- reveal ---- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- logo defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="elo-cap" fill-rule="evenodd"
+      d="M 37,13 a 13,13 0 0 1 26,0 v 74 a 13,13 0 0 1 -26,0 z
+         M 45,18 a 5,5 0 0 1 10,0 v 64 a 5,5 0 0 1 -10,0 z"/>
+    <clipPath id="elo-tb"><rect x="0" y="0" width="100" height="37"/><rect x="0" y="63" width="100" height="37"/></clipPath>
+    <symbol id="elo-mark" viewBox="0 0 100 100">
+      <use href="#elo-cap" fill="currentColor"/>
+      <use href="#elo-cap" fill="currentColor" transform="rotate(90 50 50)"/>
+      <g clip-path="url(#elo-tb)"><use href="#elo-cap" fill="currentColor"/></g>
+    </symbol>
+    <linearGradient id="qg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39A98C"/><stop offset="1" stop-color="#2B2F63"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="eloweb">
+        <svg viewBox="0 0 100 100"><use href="#elo-mark"/></svg>
+        <span class="wm">eloweb</span>
+      </a>
+      <div class="nav-links">
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contacto" class="nav-cta">Contacto</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-mark" viewBox="0 0 100 100"><use href="#elo-mark"/></svg>
+    <div class="wrap">
+      <span class="eyebrow reveal"><span class="dot"></span> Estúdio de software · Portugal</span>
+      <h1 class="reveal">O <span class="serif blue">elo</span> entre a ideia e o produto digital.</h1>
+      <p class="sub reveal">A eloweb é o estúdio de software da Cosmic Oasis. Criamos aplicações próprias — simples, rápidas e privadas por natureza. A primeira chama-se Quell.</p>
+      <div class="cta-row reveal">
+        <a href="#produtos" class="btn btn-primary">Ver produtos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <a href="#contacto" class="btn btn-ghost">Falar connosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="block" id="produtos">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="num">01</span><h2>Produtos</h2></div>
+      <div class="products">
+        <a class="card feature reveal" href="https://quellcalm.com" target="_blank" rel="noopener">
+          <div>
+            <div class="ptop">
+              <svg class="qicon" viewBox="0 0 100 100">
+                <rect width="100" height="100" rx="22" fill="url(#qg)"/>
+                <g transform="translate(24,22) scale(2.3)"><path fill="#fff" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></g>
+              </svg>
+              <span class="pill live">● Em teste fechado</span>
+            </div>
+            <h3>Quell</h3>
+            <div class="tag">Silencia o ruído. Encontra a tua calma.</div>
+            <p>Gestor de notificações inteligente para Android. Silencia promoções para um grupo discreto, deixa passar as mensagens e destaca o que é urgente — 100% no dispositivo, sem recolher nada.</p>
+          </div>
+          <span class="arrow">quellcalm.com
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <div class="card soon reveal">
+          <span class="label">Em preparação</span>
+          <span class="st">Mais produtos a caminho.<br>Feitos com o mesmo cuidado.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="block" id="abordagem">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="num">02</span><h2>O que nos guia</h2></div>
+      <div class="grid3">
+        <div class="principle reveal">
+          <div class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Privacidade por natureza</h4>
+          <p>Sempre que possível, o processamento acontece no próprio dispositivo. Sem recolha, sem rastreadores, sem contas obrigatórias.</p>
+        </div>
+        <div class="principle reveal">
+          <div class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+          <h4>Simples ao primeiro toque</h4>
+          <p>Produtos que funcionam logo, sem configurações intermináveis. A inteligência está por baixo; a experiência é imediata.</p>
+        </div>
+        <div class="principle reveal">
+          <div class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+          <h4>Feito em Portugal</h4>
+          <p>Desenhado e construído do início ao fim com atenção ao detalhe. Poucos produtos, bem cuidados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block about" id="sobre">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="num">03</span><h2>Sobre</h2></div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="lead">A eloweb é a marca de software da <span class="serif blue">Cosmic Oasis</span>. Nascemos para criar produtos digitais que as pessoas gostam mesmo de usar.</p>
+          <p class="body">Acreditamos que a tecnologia deve devolver tempo e tranquilidade, não roubá-los. Por isso construímos apps focadas, honestas e respeitadoras de quem está do outro lado do ecrã.</p>
+        </div>
+        <div class="about-side reveal">
+          <div class="row"><span class="k">Entidade</span><span class="v">Cosmic Oasis, Lda.</span></div>
+          <div class="row"><span class="k">Marca</span><span class="v">eloweb</span></div>
+          <div class="row"><span class="k">Sede</span><span class="v">Paredes, Portugal</span></div>
+          <div class="row"><span class="k">Foco</span><span class="v">Apps · Produtos digitais</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Vamos <span class="serif blue">conversar</span>.</h2>
+        <p>Uma ideia, uma parceria, ou só uma pergunta — a porta está aberta.</p>
+        <div class="cta-row">
+          <a href="mailto:support@eloweb.pt" class="btn btn-primary">support@eloweb.pt</a>
+          <a href="tel:+351910422309" class="btn btn-ghost">+351 910 422 309</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-mark reveal">eloweb.</div>
+    <div class="foot-cols">
+      <div class="foot-legal">
+        <strong>Cosmic Oasis Unipessoal, Lda.</strong> · NIPC / Matrícula 517071800 · Conservatória do Registo Comercial<br>
+        Sede: Avenida São Tomé 1092, 4580-792 Paredes · Capital social €1.000,00<br>
+        © <span id="yr">2026</span> eloweb — Todos os direitos reservados.
+      </div>
+      <div class="foot-links">
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="mailto:support@eloweb.pt">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 8), {passive:true});
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.08, rootMargin:'0px 0px -6% 0px'});
+  reveals.forEach((el,i) => { el.style.transitionDelay = (Math.min(i,6)*0.05)+'s'; io.observe(el); });
+  // Rede de segurança: nada fica escondido se o observer não disparar (ou sem scroll)
+  setTimeout(() => reveals.forEach(el => el.classList.add('in')), 1400);
+</script>
+</body>
+</html>
